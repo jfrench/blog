@@ -35,3 +35,108 @@ We can now create a plot.
 ggplot(faithfuld, aes(waiting, eruptions)) + 
   geom_raster(aes(fill = density))
 ```
+
+# A Spatial Example
+
+Interactive maps can provide a lot of information. We will create an interactive map using **ggplot2**, **plotly**, and the **sf** package. 
+
+```{r}
+#| echo: false
+library(ggplot2)
+library(sf)
+library(plotly)
+```
+
+First, we use the `st_read` function from the `sf` package to read a shapefile related to North Carolina packages that is installed by default with the `sf` package. The imported shapefile is automatically converted to an `sf` data frame. The imported object has many variables, but we point out three:
+
+- `NAME`: the name of each North Carolina county
+- `BIR74`: the number of recorded births in each county in 1974.
+- `geometry`: the `MULTIPOLYGON` associated with each North Carolina county.
+
+```{r}
+#| warning: false
+# import sf object from shapefile in sf package
+nc <- sf::st_read(system.file("shape/nc.shp", package = "sf"),
+                  quiet = TRUE)
+# display first 3 rows of nc for certain variables
+head(nc[c("NAME", "BIR74", "geometry")], n = 3)
+```
+In the code below, we:
+
+1. Use **ggplot2** to create a choropleth map of `BIR74` for each county using `geom_sf`.
+    a. We specify `fill = BIR74` so that the fill color of each county is based on the `BIR74` variable.
+    b. We also associate the `NAME` variable with the `label` aesthetic so that the name of each county is displayed when we hover over a county.
+    c. Use `scale_fill_viridis_c` to change the color palette used for the fill color.
+    d. We assign this plot the name `ggsf`.
+1. Use `plotly::ggplotly` to make the graphic interactive.
+
+The interactive graphic indicates the number of births in each county and the county name when we hover over a county.
+
+```{r}
+#| warning: false
+# plot sf object using ggplot2
+ggsf <-
+  ggplot(nc) +
+  geom_sf(aes(fill = BIR74, label = NAME)) +
+  scale_fill_viridis_c()
+# make map interactive
+ggplotly(ggsf)
+```
+
+Is there a way to provide information from multiple variable simultaneously when we hover over a county? Yes! But we have to be creative. We:
+
+- Use the `paste0` function to create a new variable, `info`, that combines multiple variables into a single character string for each county. The `\n` indicates to start a new line. We add a new line before each variable name.
+- Add the `info` variable as a variable to the `nc` data frame.
+
+```{r}
+#| warning: false
+# combine multiple variables into a character string 
+# (one per county)
+info <- paste0(
+  "\nname: ", nc$NAME,
+  "\narea: ", nc$AREA,
+  "\nbirths in 1974: ", nc$BIR74,
+  "\nSIDS cases in 1974: ", nc$SID74)
+# print first 2 values of info
+info[1:2]
+# add info the nc
+nc$info <- info
+```
+
+Now, we use `info` as the `label` aesthetic in `geom_sf` and
+specify `tooltip = "label"` so that only the `label` variable is displayed when we hover over a county.
+
+```{r}
+#| warning: false
+# create map that fills based on BIR74 but the tooltip
+# based on info
+ggsf <-
+  ggplot(nc) +
+  geom_sf(aes(fill = BIR74, label = info)) +
+  scale_fill_viridis_c()
+# show only label tooltip
+ggplotly(ggsf, tooltip = "label")
+```
+
+We can create an interactive plot using `plot_ly`. We:
+
+- Specify `type = "scatter"` and `mode = "lines"`.
+- Associate the `info` variable in `nc` with the `split` attribute to draw the separate traces for each county. We could have used `NAME`, but then only the `NAME` of each county would be displayed when we hover. This way, we get additional information.
+- Associate the `BIR74` variable in `nc` with the `color` attribute to fill each county with a color from a gradient.
+- Specify `showlegend = FALSE` so that only the color scale is displayed and no legend related to `info`. **This is a critical step**.
+- Specify `alpha = 1` so that the colors aren't muted.
+- Specify `hoverinfo = "text"` so the only the `split` information is displayed
+- Pipe this graphic into the `colorbar` function and change the title to "BIR74" (otherwise it gets displayed twice).
+
+```{r}
+#| warning: false
+plot_ly(nc,
+        color = ~BIR74,
+        split = ~info,
+        showlegend = FALSE,
+        alpha = 1,
+        type = "scatter",
+        mode = "lines",
+        hoverinfo = "text")  |>
+  colorbar(title = "BIR74")
+```
