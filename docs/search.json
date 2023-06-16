@@ -14,20 +14,6 @@
     "text": "I am a statistician and data scientist. I am currently the Director of Data Science at the University of Colorado Denver and an Associate Professor in the Department of Mathematical and Statistical Sciences.\nI am passionate about using statistics and data science to learn from data, developing software to help others learn from data, and training others to do data analysis."
   },
   {
-    "objectID": "posts/post-with-code/index.html",
-    "href": "posts/post-with-code/index.html",
-    "title": "Post With Code",
-    "section": "",
-    "text": "This is a post with executable code.\n\n1 + 1\n\n[1] 2"
-  },
-  {
-    "objectID": "posts/welcome/index.html",
-    "href": "posts/welcome/index.html",
-    "title": "Welcome To My Blog",
-    "section": "",
-    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
-  },
-  {
     "objectID": "posts/accents-in-md/accents-in-md.html",
     "href": "posts/accents-in-md/accents-in-md.html",
     "title": "Adding unicode characters with accents to Quarto markdown documents",

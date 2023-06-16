@@ -1,5 +1,6 @@
 project:
   type: website
+  output-dir: docs
 
 website:
   title: "Joshua P. French's Blog"
@@ -17,8 +18,7 @@ website:
         href: https://youtube.com/@jfrench
 format:
   html:
-    theme: cosmo
+    theme:
+      - simplex
+      - custom.scss
     css: styles.css
-
-
-
