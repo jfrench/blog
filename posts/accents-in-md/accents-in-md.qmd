@@ -1,0 +1,53 @@
+---
+title: "Adding unicode characters with accents to Quarto markdown documents"
+author: "Joshua French"
+date: "2023-06-14"
+categories: [markdown]
+---
+
+We sometimes need to write a word or name with an accent in a markdown document, e.g., caf&#233;, na&#239;ve, fa&#231;ade, jalape&#241;o, Scheff&#233;.
+
+You can do this by adding unicode characters to your document. Unicode is an international standard used to render language consistently on computers.
+
+To add a unicode character in a markdown document:
+
+1. Identify the decimal number of the character you want to include. Wikipedia has a nice list at [https://en.wikipedia.org/wiki/List_of_Unicode_characters](https://en.wikipedia.org/wiki/List_of_Unicode_characters).
+2. When you need to add the accented unicode character:
+  - Use &# to indicate the start of the unicode character
+  - Write the decimal number of the character.
+  - Use ; to indicate the end of the unicode character.
+3. Render the document.
+  - HTML documents will render without issue.
+  - If you are rendering to pdf, then you will likely need to
+  change the latex engine to xelatex or luatex. In the YAML header, use something like:
+
+```
+output:
+  pdf_document: 
+    latex_engine: xelatex
+```
+
+Here are some examples:
+
+caf&#233; is written as `caf&#233;`
+
+na&#239;ve is written as `na&#239;ve`
+
+fa&#231;ade is written as `fa&#231;ade`
+
+jalape&#241;o is written as `jalape&#241;o`
+
+This text:
+
+```
+&#223; &#228; &#233; &#239; &#241; &#343;
+
+&#242; &#246; &#163; &#165; &#174; &#275;
+```
+
+produces the following output.
+
+
+&#223; &#228; &#233; &#239; &#241; &#343;
+
+&#242; &#246; &#163; &#165; &#174; &#275;

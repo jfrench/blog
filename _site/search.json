@@ -1,0 +1,44 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Posts",
+    "section": "",
+    "text": "Data Visualization in Research\n\n\n\n\n\n\n\nmarkdown\n\n\n\n\n\n\n\n\n\n\n\nJun 21, 2023\n\n\nJoshua French\n\n\n\n\n\n\n\n\nAdding unicode characters with accents to Quarto markdown documents\n\n\n\n\n\n\n\nmarkdown\n\n\n\n\n\n\n\n\n\n\n\nJun 14, 2023\n\n\nJoshua French\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "I am a statistician and data scientist. I am currently the Director of Data Science at the University of Colorado Denver and an Associate Professor in the Department of Mathematical and Statistical Sciences.\nI am passionate about using statistics and data science to learn from data, developing software to help others learn from data, and training others to do data analysis."
+  },
+  {
+    "objectID": "posts/post-with-code/index.html",
+    "href": "posts/post-with-code/index.html",
+    "title": "Post With Code",
+    "section": "",
+    "text": "This is a post with executable code.\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Welcome To My Blog",
+    "section": "",
+    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "posts/accents-in-md/accents-in-md.html",
+    "href": "posts/accents-in-md/accents-in-md.html",
+    "title": "Adding unicode characters with accents to Quarto markdown documents",
+    "section": "",
+    "text": "We sometimes need to write a word or name with an accent in a markdown document, e.g., café, naïve, façade, jalapeño, Scheffé.\nYou can do this by adding unicode characters to your document. Unicode is an international standard used to render language consistently on computers.\nTo add a unicode character in a markdown document:\n\nIdentify the decimal number of the character you want to include. Wikipedia has a nice list at https://en.wikipedia.org/wiki/List_of_Unicode_characters.\nWhen you need to add the accented unicode character:\n\n\nUse &# to indicate the start of the unicode character\nWrite the decimal number of the character.\nUse ; to indicate the end of the unicode character.\n\n\nRender the document.\n\n\nHTML documents will render without issue.\nIf you are rendering to pdf, then you will likely need to change the latex engine to xelatex or luatex. In the YAML header, use something like:\n\noutput:\n  pdf_document: \n    latex_engine: xelatex\nHere are some examples:\ncafé is written as caf&#233;\nnaïve is written as na&#239;ve\nfaçade is written as fa&#231;ade\njalapeño is written as jalape&#241;o\nThis text:\n&#223; &#228; &#233; &#239; &#241; &#343;\n\n&#242; &#246; &#163; &#165; &#174; &#275;\nproduces the following output.\nß ä é ï ñ ŗ\nò ö £ ¥ ® ē"
+  },
+  {
+    "objectID": "posts/wnar-2023-demo/wnar-2023-demo.html",
+    "href": "posts/wnar-2023-demo/wnar-2023-demo.html",
+    "title": "Data Visualization in Research",
+    "section": "",
+    "text": "Introduction\nWe can weave rich narratives with formatted text and equations like \\(y = \\beta_0 + \\beta_1 x + \\epsilon\\) very easily.\n\n\nReproducible\nWe can put our analysis in an environment that ensures reproducibility.\n\n\nAdded explanation\nWe can add videos discussing the analysis if we want.\n\n\n\nCode and Output\nWe can easily include code and the resulting output and graphics.\nWe load a necessary package.\n\nlibrary(ggplot2)\n\nWe can now create a plot.\n\nggplot(faithfuld, aes(waiting, eruptions)) + \n  geom_raster(aes(fill = density))"
+  }
+]

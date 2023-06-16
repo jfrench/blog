@@ -1,0 +1,16 @@
+{
+  "hash": "1394daadfa510fc6d660542dd600f51b",
+  "result": {
+    "markdown": "---\ntitle: \"Data Visualization in Research\"\nauthor: \"Joshua French\"\ndate: \"2023-06-21\"\ncategories: [markdown]\n---\n\n\n# Introduction\n\nWe can weave rich narratives with **formatted** text and equations like $y = \\beta_0 + \\beta_1 x + \\epsilon$ very easily.\n\n# Reproducible\n\nWe can put our analysis in an environment that ensures reproducibility.\n\n# Added explanation\n\nWe can add videos discussing the analysis if we want.\n\n\n{{< video https://youtu.be/e_04ZrNroTo >}}\n\n\n\n# Code and Output\n\nWe can easily include code and the resulting output and graphics.\n\nWe load a necessary package.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(ggplot2)\n```\n:::\n\n\nWe can now create a plot.\n\n\n::: {.cell}\n\n```{.r .cell-code}\nggplot(faithfuld, aes(waiting, eruptions)) + \n  geom_raster(aes(fill = density))\n```\n\n::: {.cell-output-display}\n![](wnar-2023-demo_files/figure-html/unnamed-chunk-2-1.png){width=672}\n:::\n:::\n",
+    "supporting": [
+      "wnar-2023-demo_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

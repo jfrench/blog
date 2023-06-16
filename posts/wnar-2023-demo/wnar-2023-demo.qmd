@@ -1,0 +1,37 @@
+---
+title: "Data Visualization in Research"
+author: "Joshua French"
+date: "2023-06-21"
+categories: [markdown]
+---
+
+# Introduction
+
+We can weave rich narratives with **formatted** text and equations like $y = \beta_0 + \beta_1 x + \epsilon$ very easily.
+
+# Reproducible
+
+We can put our analysis in an environment that ensures reproducibility.
+
+# Added explanation
+
+We can add videos discussing the analysis if we want.
+
+{{< video https://youtu.be/e_04ZrNroTo >}}
+
+# Code and Output
+
+We can easily include code and the resulting output and graphics.
+
+We load a necessary package.
+
+```{r}
+library(ggplot2)
+```
+
+We can now create a plot.
+
+```{r}
+ggplot(faithfuld, aes(waiting, eruptions)) + 
+  geom_raster(aes(fill = density))
+```

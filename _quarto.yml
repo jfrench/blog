@@ -1,0 +1,24 @@
+project:
+  type: website
+
+website:
+  title: "Joshua P. French's Blog"
+  navbar:
+    right:
+      - about.qmd
+      - text: Email
+        icon: envelope
+        href: mailto:joshua.french@ucdenver.edu
+      - text: GitHub
+        icon: github
+        href: https://github.com/jfrench
+      - text: YouTube
+        icon: youtube
+        href: https://youtube.com/@jfrench
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+
+
+
