@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/interactive-notebook/interactive-notebook.html",
       "/posts/wnar-2023-demo/wnar-2023-demo.html",
       "/posts/accents-in-md/accents-in-md.html"
     ]
