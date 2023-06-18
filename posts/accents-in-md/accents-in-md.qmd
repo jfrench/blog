@@ -1,6 +1,6 @@
 ---
 title: "Adding unicode characters with accents to Quarto markdown documents"
-author: "Joshua French"
+author: "Joshua P. French"
 date: "2023-06-14"
 categories: [markdown]
 ---
